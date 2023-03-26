@@ -1,0 +1,111 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 HelveticaNeue;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red157\green156\blue176;\red156\green155\blue176;
+\red42\green49\blue64;\red245\green245\blue246;}
+{\*\expandedcolortbl;;\cssrgb\c0\c1\c1;\cssrgb\c67678\c67689\c74579;\cssrgb\c67451\c67451\c74510;
+\cssrgb\c21569\c25490\c31765;\cssrgb\c96863\c96863\c97255;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid1\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid101\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28600\viewh18000\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Assignment \
+\
+(C)\
+Real world use case where stack is better than array.\
+One real-world use case where a stack data structure is better than an array is when implementing the \'93Undo\'94 feature in a text edition or other similar application.\
+When you type in a text editor, the text you type is stored in an array.Howeever, to implement the \'93Undo\'94 feature, we need to keep track of all the previous states of the text as it was being typed.Here\'92s where stack comes in handy.\
+Whenever the user types a new character, we can pus the current state of the text onto the stack. If the user then decides to undo their last action, we can simply pop the previous state from the stack and restore it as the current state.\
+Using a stack makes this implementation efficient because it ensures that the previous states of the text are stored in the order they were entered, and it allows us to easily remove the most recent state from the top of the stack when the user chooses to undo their last action.\
+\
+(E)\
+To find the number of ways to make a given sum using different combinations\
+Of coins , we can use a dynamic programming approach known as the \'93coin change\'94 problem.\
+The basic idea of this approach is to use a 2D array dp[I][j] to store the number of ways to make the sum j using the first I coins. We can fill up this array by starting with the base case dp[0][0]=1 (there is only one way to make a sum of 0 using 0 coins) and the recurrence relation:\
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 dp[i][j]=dp[i-1][j]+dp[i][j-coins[I-1]]\
+Here, dp[i-1][j] represented the number of ways to make the sum j using only the first I-1 coins (without using the 4th coin) and dp[I][j-coins[]I-1] represents the number of ways to make the sum j-coins[I-1] using the first I coins(by using the 4th coin at least once).\
+Once we have filled up ht dp array, the answer to the problem will do dp[N][sum], I.e. the number of ways to make the sum sum using all N coins.\
+Here\'92s the java code for this approach:\
+\pard\pardeftab720\partightenfactor0
+
+\f1 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Public int coinChange(int[] coins, int sum)\{\
+    Int n=coins.length;\
+    Int [][] dp=new int [n+1][sum+1];\
+    dp[0][0]=1;\
+    for(int I=1;i<=n;i++)\{\
+      dp[i][j]=dp[i-1][j];\
+      if(j>=coins[I-1])\{\
+         dp[i][j]+=dp[i][j-coins[I-1]]\
+      \}\
+    \}\
+    Return dp[n][sum];\
+\}\
+This time complexity of this approach is O(N*Sum),  where N is the number of coins and sum is the target sum, The space complexity is also O(Nsum) due to the use of the dp array.\
+\
+A greedy algorithm is an algorithmic paradigm that follows the problem-solving heuristic of making the locally optimal choice at each state with the hope of finding a global optimum. In other words, it chooses the best option at each step without considering the large picture of future consequences.\
+Greedy algorithms are often use for optimisation problems and are relatively simple to implement.\
+Dynamic programming is a technique for solving optimisation problems by breaking them down into smaller subproblems and solving each subproblem only once, storing the solution in a table or array to be used later. The key idea behind DP is to avoid redundant calculation by storing the solutions to subproblems in memory and using them to solve large problems.\
+\
+\
+(F)\
+The dot product and cross product are two different operations defined on vectors in mathematics.\
+The dot product, also known as the scalar product, is a binary operation that takes two vetoers and returns a scalar quantity.It is defined as the product of the magnitudes of the two vectors and the cosine of the angle between them.Geometrically, the \
+Dot product gives the projections of one vector onto the other.The formula of the dot priduct of two vectors a and b is:\
+a.b= |a||b|cos0,\
+\
+Where |a| and |b| are the magnitudes of a and b, respectively and 0 is the angle between them.\
+The cross product, also know as the vector product, is a binary operation that take two verctores and return a vector quantity that is perpendicular to both of the input vectors. Geometrically, the cross product gives the are of the parallelogram formed by the two vectors. The formula for the cross product of two vectors a and b is:\
+\
+a*b=|a||b|sin0\
+\
+Where |a| and |b| are the magnitudes of a and b, respectively, 0 is the angle between them and n is a unit vector that is perpendicular to both a and b.\
+In summary, the dot product gives a scalar quantity, while the cross product gives a vector quantity. The dot product measures the degree of alognment between two vectors, while the cross product measures the degree of perpendiculararity.\
+Reference Link:https://www.geeksforgeeks.org/dot-and-cross-products-on-vectors/\
+\
+To calculate the intersection between a ray and  a plane, you can follow these steps;\
+1. Define the ray: A ray can be defined by its origin point (P) and a direction vector (D), which represents the direction in which the ray travels. The equation of the ray can be expressed as: P + tD\
+Where t is a scalar that determines the distance along the ray from the origin point.\
+\
+2.Define the place: A plane can be defined by a point (P0) on the plane and a normal vector(N) perpendicular to the plane. The equation of the place can be expressed as:\
+N . (P - P0)=0\
+Where . Denotes the dot product.\
+\
+3.Find the intersection point: To find the intersection point between the ray and the plane, you need to substitute the equation of the ray into the equation of the place and solve for t. This gives the value of t at which the ray intersects the place. Substitution this value of t back into the equation of the ray gives the intersection point.\
+t=(N . (P0 - P)) /(N .D)\
+If the denominator N.D is zero, then the ray and plane are parallel and do not intersect.\
+If t is negative, then the intersection point is being the origin of the ray and can be ignored.\
+If t is positive, then the intersection point is in front of the origin of the ray and can be calculated as:\
+Inter point =P + D\
+\pard\pardeftab720\qc\partightenfactor0
+
+\fs32 \cf4 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+
+\fs24 \cf2 \strokec3 (G)\
+My favourite subject during my Academics was Data Structures and Algorithms.\
+\
+(H)\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\fs32 \cf5 \strokec5 \
+\pard\pardeftab720\partightenfactor0
+
+\fs24 \cf2 \strokec3 1. Memory Issues: The random crashes could be die to memory issues such as buffer overfolows, heap corruptions, or memory leaks. These issues could cause the program to behave erratically, leading to crashes at random points its the code.\
+2.Race Conditions: if the code is multi-threaded, race conditions could be causing the crashes. A race condition occurs when two threads access the same resource at the same time and the behaviour of the code becomes unpredictable.\
+3. Hardware issues: sometimes, random crashes can be caused by hardware issues such as faulty RAM or hard drives. These issues can cause data corruption and  lead to crashes at random point in the code.
+\fs32 \cf5 \strokec5 \
+
+\fs24 \cf2 \strokec3 4. Third-Party Libraries: if the code using third-party libraries, the crashes could be cause by issues in the libraries. For example, if the library is not threado-safe or is using deprecated functions, it cold cause random crashes.\
+5. Operation System Issues: in rare cases, the crashes could be caused by bugs or issues in the operation system itself. These issues could cause the program to crash randomly, and it might be difficult to reproduce the issues consistently.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0
+\fs32 \cf5 \cb6 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 	\cf4 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720\qc\partightenfactor0
+\cf4 \
+}
